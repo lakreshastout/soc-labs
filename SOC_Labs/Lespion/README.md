@@ -14,9 +14,7 @@ Investigation
 The investigation began with analysis of the provided GitHub data associated with the suspected insider. During repository review, an exposed API key was discovered embedded directly within the source code. The key appeared to be hardcoded, which represents a significant security vulnerability. Hardcoded credentials allow unauthorized access to services and can be exploited by attackers if publicly accessible.
 
 The exposed API key identified during repository analysis was:
-
 aJFRaLHjMXvYZgLPwiJKroYLGRkNBW
-
 Further review of the repository revealed a Base64 encoded string associated with authentication logic. The encoded value was extracted and decoded using CyberChef. The decoding process revealed a plaintext password, confirming that sensitive authentication data had been improperly stored within the repository.
 
 The encoded string identified was:
