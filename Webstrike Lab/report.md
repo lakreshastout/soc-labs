@@ -1,25 +1,33 @@
 WebStrike — Web Server Compromise Investigation
 
 Overview
+
 This investigation analyzes network traffic captured from a suspected compromise of a company web server. The objective was to determine the source of the attack, identify any malicious activity, analyze attacker persistence mechanisms, and detect potential data exfiltration. Analysis of the PCAP file was conducted using Wireshark to reconstruct attacker behavior and identify indicators of compromise.
 
 
 Scenario
+
 A suspicious file was discovered on an internal web server, prompting concerns of unauthorized activity. The network team captured network traffic and provided a PCAP file for forensic analysis. The goal of the investigation was to determine how the file was uploaded, identify any exploitation attempts, and assess whether sensitive data was accessed or exfiltrated.
 
 
 Tools Used
+
 Wireshark
+
 HTTP Stream Analysis
+
 TCP Stream Analysis
+
 IP Geolocation Lookup
 
 
 Platform Used
+
 CyberDefenders — WebStrike Lab
 
 
 Analysis
+
 Review of the PCAP file identified suspicious HTTP traffic originating from external IP address 117.11.88.124 communicating with the web server at 24.49.63.79. GeoIP lookup determined the source of the activity originated from Tianjin, China, indicating an external attacker.
 
 Inspection of HTTP request headers revealed the attacker utilized the following User-Agent string:
@@ -36,27 +44,45 @@ Further investigation of TCP traffic over port 8080 revealed the attacker execut
 
 
 Findings
+
 Attacker IP Address
+
 117.11.88.124
+
 Attacker Location
+
 Tianjin, China
+
 Attacker User-Agent
+
 Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
+
 Malicious Web Shell
+
 image.jpg.php
+
 Upload Directory
+
 /reviews/uploads/
+
 Reverse Shell Port
+
 8080
+
 File Targeted for Exfiltration
 /etc/passwd
 
 
 MITRE ATT&CK Mapping
+
 Initial Access — Exploitation of Public-Facing Application
+
 Execution — Command Execution via Web Shell
+
 Persistence — Web Shell Deployment
+
 Command and Control — Reverse Shell over Netcat
+
 Exfiltration — Data Exfiltration via HTTP
 
 
@@ -65,10 +91,17 @@ Network traffic analysis confirmed that an external attacker exploited a vulnera
 
 
 Skills Demonstrated
+
 Network Forensics
+
 PCAP Analysis
+
 Web Attack Investigation
+
 Reverse Shell Detection
+
 Data Exfiltration Detection
+
 Threat Analysis
+
 Incident Reconstruction
